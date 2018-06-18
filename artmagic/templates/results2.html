@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+
+
+{% block head %}
+<title> Art Network </title>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block body %}
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">ART MAGIC</a></li>
+        <li><a href="http://www.google.com">About Me</a></li>
+        <li><a href="http://www.github.com/adampallus/artnetwork">Artnetwork Github Page</a></li>
+        <li><a href="http://www.google.com"> How does it work? <span class="sr-only">(current)</span></a></li>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+
+
+
+  <div class="col-lg-4 col-xs-12">
+  <form method="POST" action='/' enctype = "multipart/form-data">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn-lg btn-primary" input type="submit">Find!</button>
+      </span>
+      <input type = "file" name = "file">
+
+
+    </div><!-- /input-group -->
+    </form>
+  </div><!-- /.col-lg-6 -->
+</nav>
+<!-- Background image -->
+<!--body background='/static/img/success.png' height='100%'-->
+
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][0]}}>
+      <img src={{matches['image_url'][0]}} alt={{matches['art_title'][0]}}>
+    </a>
+    <a href={{matches['linkurl'][1]}}>
+      <img src={{matches['image_url'][1]}} alt={{matches['art_title'][1]}}>
+    </a>
+  </div>
+  <div class="column">
+    <img class="userpic" src={{"static/img/tmp/"+original}}>
+    <a href={{matches['linkurl'][2]}}>
+      <img src={{matches['image_url'][2]}} alt={{matches['art_title'][2]}}>
+    </a>
+    
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][3]}}>
+      <img src={{matches['image_url'][3]}} alt={{matches['art_title'][3]}}>
+    </a>
+    <a href={{matches['linkurl'][4]}}>
+      <img src={{matches['image_url'][4]}} alt={{matches['art_title'][4]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][5]}}>
+      <img src={{matches['image_url'][5]}} alt={{matches['art_title'][5]}}>
+    </a>
+    <a href={{matches['linkurl'][6]}}>
+      <img src={{matches['image_url'][6]}} alt={{matches['art_title'][6]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][7]}}>
+      <img src={{matches['image_url'][7]}} alt={{matches['art_title'][7]}}>
+    </a>
+    <a href={{matches['linkurl'][8]}}>
+      <img src={{matches['image_url'][8]}} alt={{matches['art_title'][8]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][9]}}>
+      <img src={{matches['image_url'][9]}} alt={{matches['art_title'][9]}}>
+    </a>
+    <a href={{matches['linkurl'][01]}}>
+      <img src={{matches['image_url'][10]}} alt={{matches['art_title'][10]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][11]}}>
+      <img src={{matches['image_url'][11]}} alt={{matches['art_title'][11]}}>
+    </a>
+    <a href={{matches['linkurl'][12]}}>
+      <img src={{matches['image_url'][12]}} alt={{matches['art_title'][12]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][13]}}>
+      <img src={{matches['image_url'][13]}} alt={{matches['art_title'][13]}}>
+    </a>
+    <a href={{matches['linkurl'][14]}}>
+      <img src={{matches['image_url'][14]}} alt={{matches['art_title'][14]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][15]}}>
+      <img src={{matches['image_url'][15]}} alt={{matches['art_title'][15]}}>
+    </a>
+    <a href={{matches['linkurl'][16]}}>
+      <img src={{matches['image_url'][16]}} alt={{matches['art_title'][16]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][17]}}>
+      <img src={{matches['image_url'][17]}} alt={{matches['art_title'][17]}}>
+    </a>
+    <a href={{matches['linkurl'][19]}}>
+      <img src={{matches['image_url'][19]}} alt={{matches['art_title'][19]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][20]}}>
+      <img src={{matches['image_url'][20]}} alt={{matches['art_title'][20]}}>
+    </a>
+    <a href={{matches['linkurl'][21]}}>
+      <img src={{matches['image_url'][21]}} alt={{matches['art_title'][21]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][22]}}>
+      <img src={{matches['image_url'][22]}} alt={{matches['art_title'][22]}}>
+    </a>
+    <a href={{matches['linkurl'][23]}}>
+      <img src={{matches['image_url'][23]}} alt={{matches['art_title'][23]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][24]}}>
+      <img src={{matches['image_url'][24]}} alt={{matches['art_title'][24]}}>
+    </a>
+    <a href={{matches['linkurl'][25]}}>
+      <img src={{matches['image_url'][25]}} alt={{matches['art_title'][25]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][26]}}>
+      <img src={{matches['image_url'][26]}} alt={{matches['art_title'][26]}}>
+    </a>
+    <a href={{matches['linkurl'][27]}}>
+      <img src={{matches['image_url'][27]}} alt={{matches['art_title'][27]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][28]}}>
+      <img src={{matches['image_url'][28]}} alt={{matches['art_title'][28]}}>
+    </a>
+    <a href={{matches['linkurl'][29]}}>
+      <img src={{matches['image_url'][29]}} alt={{matches['art_title'][29]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][30]}}>
+      <img src={{matches['image_url'][30]}} alt={{matches['art_title'][30]}}>
+    </a>
+    <a href={{matches['linkurl'][31]}}>
+      <img src={{matches['image_url'][31]}} alt={{matches['art_title'][31]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][32]}}>
+      <img src={{matches['image_url'][32]}} alt={{matches['art_title'][32]}}>
+    </a>
+    <a href={{matches['linkurl'][33]}}>
+      <img src={{matches['image_url'][33]}} alt={{matches['art_title'][33]}}>
+    </a>
+  </div>
+  <div class="column">
+    <a href={{matches['linkurl'][34]}}>
+      <img src={{matches['image_url'][34]}} alt={{matches['art_title'][34]}}>
+    </a>
+    <a href={{matches['linkurl'][35]}}>
+      <img src={{matches['image_url'][35]}} alt={{matches['art_title'][35]}}>
+    </a>
+  </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="/static/js/index.js"></script>
+
+
+{% endblock %}

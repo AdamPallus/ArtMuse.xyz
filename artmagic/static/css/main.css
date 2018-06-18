@@ -1,0 +1,151 @@
+.shelfy-font
+{
+    color:#ff0000 !important;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+img {
+  /*display: block;*/
+  max-width:300px;
+  max-height:300px;
+  width: auto;
+  height: auto;
+}
+
+/*div.shelfy-background{
+    color:#fff;
+    text-align:center;
+    background:'/static/img/background.jpeg';
+    background-size:cover;
+    background-position:center;
+    padding-top:100px;
+    padding-bottom:100px;
+}*/
+
+
+/*#main.container{
+    background-image: url('../img/background.jpeg') repeat center center;
+}*/
+
+/*
+body {
+  background-image: url('../img/background.jpeg');
+}*/
+
+
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.top30{
+  margin-top:30%;
+}
+
+.bottom30{
+  margin-bottom:30%;
+}
+
+.top20{
+  margin-top:20%;
+}
+
+.bottom20{
+  margin-bottom:20%;
+}
+
+
+.top10bottom2{
+  margin-top:10%;
+  margin-bottom:2%;
+}
+
+.bottom10{
+  margin-bottom:10%;
+}
+
+.top5{
+  margin-top:5%;
+}
+
+
+/*
+input[type=file] {
+    margin: 0 auto;
+}
+
+*/
+
+
+.btn-file {
+    /*position: relative;*/
+    position: hidden;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    /*position: absolute;*/
+    position: hidden;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+.row {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.userpic {
+   border:10px solid #021a40;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+/*@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}*/
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/*@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }*/
+
+}
+
+[hidden] {
+  display: none !important;
+}
