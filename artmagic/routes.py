@@ -5,19 +5,21 @@ Created on Wed Jun 13 09:56:53 2018
 
 @author: adam
 """
+import os
+
+import flask
+import numpy as np
+import tensorflow as tf
+import pandas as pd
+
+from werkzeug.utils import secure_filename
+from PIL import ExifTags, Image
+from keras.applications import VGG16
+from keras.preprocessing import image as kimage
 
 from artmagic import app
 from artmagic.models.similarity import find_matches
 
-import flask
-import os
-import numpy as np
-from keras.applications import VGG16
-from keras.preprocessing import image as kimage
-import tensorflow as tf
-from werkzeug.utils import secure_filename
-import pandas as pd
-from PIL import ExifTags, Image
 
 
 collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
