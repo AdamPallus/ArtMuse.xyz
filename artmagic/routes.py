@@ -16,6 +16,7 @@ from keras.preprocessing import image as kimage
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 import pandas as pd
+from PIL import ExifTags, Image
 
 #collection_features = np.load('/home/adam/artnetwork/saved_collection_features.npy')
 #collection_features = np.load('/home/adam/artnetwork/collection_features2.npy')
@@ -42,6 +43,31 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+def autorotate_image(filepath):
+    image=Image.open(filepath)
+    try:
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation]=='Orientation':
+                break
+            exif=dict(image._getexif().items())
+    
+        if exif[orientation] == 3:
+            print('ROTATING 180')
+            image=image.rotate(180, expand=True)
+        elif exif[orientation] == 6:
+            print('ROTATING 270')
+            image=image.rotate(270, expand=True)
+        elif exif[orientation] == 8:
+            print('ROTATING 90')
+            image=image.rotate(90, expand=True)
+        image.save(filepath)
+        image.close()
+    except (AttributeError, KeyError, IndexError):
+    # cases: image don't have getexif
+    
+        pass
+    return(image)
+    
 @app.route('/',  methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -64,19 +90,20 @@ def index():
         if file and allowed_file(file.filename):
             print('SUCCESS')
                     # Image info
+
             img_file = flask.request.files.get('file')
+            
+            print('Rotated!')
 #            img_name = img_file.filename
             img_name = secure_filename(img_file.filename)
 
             # Write image to static directory 
             #os.getcwd()
             imgurl=os.path.join(app.config['UPLOAD_FOLDER'], img_name)
-            try:
-                file.save(imgurl)
-            except Exception as e:
-                print(e)
-                print(os.getcwd())
-                raise e
+            file.save(imgurl)
+            #check and rotate cellphone images
+            img_file = autorotate_image(imgurl)
+
                 
             img = kimage.load_img(imgurl, target_size=(224, 224))
             img = kimage.img_to_array(img)
