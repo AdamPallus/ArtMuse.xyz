@@ -26,4 +26,5 @@ app.config.update(dict(
 ))
 
 
-from artmagic import routes
+#from artmagic import routes
+from artmagic import views
