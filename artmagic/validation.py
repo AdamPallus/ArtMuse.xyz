@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Created on Wed Jun 20 11:22:56 2018
+
+@author: adam
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
 Created on Wed Jun 13 09:56:53 2018
 
 @author: adam
 """
 import os
+import datetime
+import json
 
 import flask
 import numpy as np
@@ -28,7 +38,7 @@ from artmagic.models.similarity import find_matches
 #                                          'files_and_titles_6-17.csv'))
 
 collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
-                                           'fc6_features_all.npy'))
+                                           'fc6_features_all_binary.npy'))
 files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
                                           'files_and_titles_all.csv'))
 
@@ -77,6 +87,19 @@ def autorotate_image(filepath):
     # cases: image don't have getexif   
         pass
     return(image)
+    
+def save_validation_result(result,user_image):
+    '''loads json and saves results of validation test'''
+    
+    json_path = os.path.join(app.config['DATA_FOLDER'],'validation_results.json')
+    with open(json_path, 'r') as fp:
+        validation_results = json.load(fp)
+
+    validation_results.append([{'time':str(datetime.datetime.now()),
+                                'result':result,
+                                'user_image':user_image}])  
+    with open(json_path, 'w') as fp:
+        json.dump(validation_results, fp, sort_keys=True, indent=4)
     
 @app.route('/',  methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -135,3 +158,87 @@ def index():
 
         
         return flask.redirect(flask.request.url)
+
+@app.route('/validate', methods=['GET', 'POST'])
+def validation():
+        # Get method type
+    method = flask.request.method
+    print(method)
+
+    if method == 'GET':
+        return flask.render_template('validate.html')
+    
+    if method == 'POST':
+        # No file found in the POST submission
+        if 'file' not in flask.request.files:
+            print("FAIL")
+            return flask.redirect(flask.request.url)
+
+        # File was found
+        file = flask.request.files['file']
+        if file and allowed_file(file.filename):
+
+
+            img_file = flask.request.files.get('file')            
+            #secure file name so stop hackers
+            img_name = secure_filename(img_file.filename)
+
+            # Write image to tmp folder so it can be shown on the next page 
+            imgurl=os.path.join(app.config['UPLOAD_FOLDER'], img_name)
+            file.save(imgurl)
+            #check and rotate cellphone images
+            img_file = autorotate_image(imgurl)
+                
+            #load image for processing through the model
+            img = kimage.load_img(imgurl, target_size=(224, 224))
+            img = kimage.img_to_array(img)
+            img = np.expand_dims(img, axis=0)  
+            
+            #there's an issue with the model losing track of the graph
+            #I found this fix by searching for the error I was getting
+            #see above
+            global graph
+            with graph.as_default():
+                pred=model.predict(img)
+            matches=find_matches(pred, collection_features, 
+                                 files_and_titles['imgfile'],dist='cosine')
+            
+            showresults=files_and_titles.set_index('imgfile',drop=False).join(matches.set_index('imgfile'))
+            showresults.sort_values(by='simscore',ascending=True,inplace=True)
+            
+            randoms=np.random.randint(0,len(showresults),(50,1))
+            original_url = img_name
+
+            print('Rendering Validation Page')
+            return flask.render_template('validate_results.html',
+                                         matches=showresults,
+                                         randoms=randoms.flatten().tolist(),
+                                         original=original_url)
+            
+        flask.flash('Upload only image files')
+
+        
+        return flask.redirect(flask.request.url)
+    
+       
+@app.route('/random', methods=['GET', 'POST'])
+def chose_random():
+    method = flask.request.method
+    if method == 'GET':
+        return flask.render_template('validate.html')
+    
+    if method == 'POST':
+        user_image = flask.request.form['submit']
+        save_validation_result(0,user_image)
+        return flask.render_template('validate.html')
+    
+@app.route('/algorithm', methods=['GET', 'POST'])
+def chose_mine():
+    method = flask.request.method
+    if method == 'GET':
+        return flask.render_template('validate.html')
+    
+    if method == 'POST':
+        user_image = flask.request.form['submit']
+        save_validation_result(0,user_image)
+        return flask.render_template('validate.html')

@@ -27,42 +27,60 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 
-
-
-
-  <div class="col-lg-4 col-xs-12">
-  <form method="POST" action='/' enctype = "multipart/form-data">
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn-lg btn-primary" input type="submit">Find!</button>
-      </span>
-      <input type = "file" name = "file">
-
-
-    </div><!-- /input-group -->
-    </form>
-  </div><!-- /.col-lg-6 -->
 </nav>
 <!-- Background image -->
 <!--body background='/static/img/success.png' height='100%'-->
 
 <div class="row">
   <div class="column">
+    <form method="POST" action='/random'>
+        <span class="input-group-btn">
+          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>BEST</button>
+        </span>
+    </form>
     <a href={{matches['linkurl'][0]}} target="_blank">
-      <img src={{matches['image_url'][0]}} title={{matches['art_title'][0]}}>
+      <img src={{matches['image_url'][randoms[0]]}} title={{matches['art_title'][randoms[0]]}}>
     </a>
     <a href={{matches['linkurl'][1]}} target="_blank">
-      <img src={{matches['image_url'][1]}} title={{matches['art_title'][1]}}>
+      <img src={{matches['image_url'][randoms[1]]}} title={{matches['art_title'][randoms[1]]}}>
     </a>
   </div>
   <div class="column">
+      <form method="POST" action='/algorithm'>
+        <span class="input-group-btn">
+          <button class="btn-lg btn-primary" input type="submit" name= "submit"value={{original}}>BEST</button>
+        </span>
+    </form>
     <a href={{"static/img/tmp/"+original}} target="_blank">
       <img class="userpic" src={{"static/img/tmp/"+original}}>
+    </a>
+    <a href={{matches['linkurl'][0]}} target="_blank">
+      <img src={{matches['image_url'][0]}} title={{matches['art_title'][0]}}>
+    </a>
+
+  </div>
+  <div class="column">
+      <form method="POST" action='/algorithm'>
+        <span class="input-group-btn">
+          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>BEST</button>
+        </span>
+    </form>
+    <a href={{matches['linkurl'][1]}} target="_blank">
+      <img src={{matches['image_url'][1]}} title={{matches['art_title'][1]}}>
     </a>
     <a href={{matches['linkurl'][2]}} target="_blank">
       <img src={{matches['image_url'][2]}} title={{matches['art_title'][2]}}>
     </a>
-
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][randoms[2]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[2]]}} title={{matches['art_title'][randoms[2]]}}>
+    </a>
+    <a href={{matches['linkurl'][randoms[3]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[3]]}} title={{matches['art_title'][randoms[3]]}}>
+    </a>
   </div>
   <div class="column">
     <a href={{matches['linkurl'][3]}} target="_blank">
@@ -72,14 +90,22 @@
       <img src={{matches['image_url'][4]}} title={{matches['art_title'][4]}}>
     </a>
   </div>
-</div>
-<div class="row">
   <div class="column">
     <a href={{matches['linkurl'][5]}} target="_blank">
       <img src={{matches['image_url'][5]}} title={{matches['art_title'][5]}}>
     </a>
     <a href={{matches['linkurl'][6]}} target="_blank">
       <img src={{matches['image_url'][6]}} title={{matches['art_title'][6]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][randoms[4]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[4]]}} title={{matches['art_title'][randoms[4]]}}>
+    </a>
+    <a href={{matches['linkurl'][randoms[5]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[5]]}} title={{matches['art_title'][randoms[5]]}}>
     </a>
   </div>
   <div class="column">
@@ -101,6 +127,14 @@
 </div>
 <div class="row">
   <div class="column">
+    <a href={{matches['linkurl'][randoms[6]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[6]]}} title={{matches['art_title'][randoms[6]]}}>
+    </a>
+    <a href={{matches['linkurl'][18]}} target="_blank">
+      <img src={{matches['image_url'][18]}} title={{matches['art_title'][18]}}>
+    </a>
+  </div>
+  <div class="column">
     <a href={{matches['linkurl'][11]}} target="_blank">
       <img src={{matches['image_url'][11]}} title={{matches['art_title'][11]}}>
     </a>
@@ -116,6 +150,16 @@
       <img src={{matches['image_url'][14]}} title={{matches['art_title'][14]}}>
     </a>
   </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][randoms[7]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[7]]}} title={{matches['art_title'][randoms[7]]}}>
+    </a>
+    <a href={{matches['linkurl'][randoms[8]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[8]]}} title={{matches['art_title'][randoms[8]]}}>
+    </a>
+  </div>
   <div class="column">
     <a href={{matches['linkurl'][15]}} target="_blank">
       <img src={{matches['image_url'][15]}} title={{matches['art_title'][15]}}>
@@ -124,14 +168,22 @@
       <img src={{matches['image_url'][16]}} title={{matches['art_title'][16]}}>
     </a>
   </div>
-</div>
-<div class="row">
   <div class="column">
     <a href={{matches['linkurl'][17]}} target="_blank">
       <img src={{matches['image_url'][17]}} title={{matches['art_title'][17]}}>
     </a>
     <a href={{matches['linkurl'][18]}} target="_blank">
-      <img src={{matches['image_url'][18]}} title={{matches['art_title'][18]}}>
+      <img src={{matches['image_url'][18]}} title={{matches['art_title'][19]}}>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <a href={{matches['linkurl'][randoms[9]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[9]]}} title={{matches['art_title'][randoms[9]]}}>
+    </a>
+    <a href={{matches['linkurl'][randoms[10]]}} target="_blank">
+      <img src={{matches['image_url'][randoms[10]]}} title={{matches['art_title'][randoms[10]]}}>
     </a>
   </div>
   <div class="column">
@@ -148,58 +200,6 @@
     </a>
     <a href={{matches['linkurl'][22]}} target="_blank">
       <img src={{matches['image_url'][22]}} title={{matches['art_title'][22]}}>
-    </a>
-  </div>
-</div>
-<div class="row">
-  <div class="column">
-    <a href={{matches['linkurl'][23]}} target="_blank">
-      <img src={{matches['image_url'][23]}} title={{matches['art_title'][23]}}>
-    </a>
-    <a href={{matches['linkurl'][24]}} target="_blank">
-      <img src={{matches['image_url'][24]}} title={{matches['art_title'][24]}}>
-    </a>
-  </div>
-  <div class="column">
-    <a href={{matches['linkurl'][25]}} target="_blank">
-      <img src={{matches['image_url'][25]}} title={{matches['art_title'][25]}}>
-    </a>
-    <a href={{matches['linkurl'][26]}} target="_blank">
-      <img src={{matches['image_url'][26]}} title={{matches['art_title'][26]}}>
-    </a>
-  </div>
-  <div class="column">
-    <a href={{matches['linkurl'][27]}} target="_blank">
-      <img src={{matches['image_url'][27]}} title={{matches['art_title'][27]}}>
-    </a>
-    <a href={{matches['linkurl'][28]}} target="_blank">
-      <img src={{matches['image_url'][28]}} title={{matches['art_title'][28]}}>
-    </a>
-  </div>
-</div>
-<div class="row">
-  <div class="column">
-    <a href={{matches['linkurl'][29]}} target="_blank">
-      <img src={{matches['image_url'][29]}} title={{matches['art_title'][29]}}>
-    </a>
-    <a href={{matches['linkurl'][30]}} target="_blank">
-      <img src={{matches['image_url'][30]}} title={{matches['art_title'][30]}}>
-    </a>
-  </div>
-  <div class="column">
-    <a href={{matches['linkurl'][31]}} target="_blank">
-      <img src={{matches['image_url'][31]}} title={{matches['art_title'][31]}}>
-    </a>
-    <a href={{matches['linkurl'][32]}} target="_blank">
-      <img src={{matches['image_url'][32]}} title={{matches['art_title'][32]}}>
-    </a>
-  </div>
-  <div class="column">
-    <a href={{matches['linkurl'][33]}} target="_blank">
-      <img src={{matches['image_url'][33]}} title={{matches['art_title'][33]}}>
-    </a>
-    <a href={{matches['linkurl'][34]}} target="_blank">
-      <img src={{matches['image_url'][34]}} title={{matches['art_title'][34]}}>
     </a>
   </div>
 </div>

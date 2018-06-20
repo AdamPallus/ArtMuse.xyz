@@ -21,8 +21,9 @@ def hamming_distance(a,b):
     compares distance for binary arrays
     returns number of features that are not the same
     '''
-    a[a>0]=1
-    b[b>0]=1
+    if max(a)>1:
+      a[a>0]=1
+      b[b>0]=1
     return(distance.hamming(a,b))
     
 def find_matches(pred, #features from user selected image
