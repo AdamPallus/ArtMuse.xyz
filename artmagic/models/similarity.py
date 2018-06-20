@@ -25,20 +25,30 @@ def hamming_distance(a,b):
     b[b>0]=1
     return(distance.hamming(a,b))
     
-def find_matches(pred, collection_features, images, dist='cosine'): 
-
+def find_matches(pred, #features from user selected image
+                 collection_features,  #list of features in the collection
+                 images, #list of filenames associated with the features
+                 dist='cosine' #distance metric - only cosine is good
+                 ): 
+    '''
+    Finds matches for the features of the selected image, 
+    according to the distance metric specified.
+    Distance metrics use the scipy package
+    '''   
     pred = pred.flatten()
     
     nimages = len(collection_features)
     sims = []
     for i in range(0,nimages):
-        if dist=='cosine':
-#            sims[i]= cosine_distance(pred.flatten(),collection_features[i].flatten())
-            sims.append(distance.cosine(pred.flatten(),collection_features[i].flatten()))
+        if dist=='euclidean':
+            sims.append(distance.euclidean(pred.flatten(),
+                                           collection_features[i].flatten()))
         elif dist=='hamming':
-            sims.append(hamming_distance(pred.flatten(),collection_features[i].flatten()))
-        else:
-            sims.append(distance.euclidean(pred.flatten(),collection_features[i].flatten()))
+            sims.append(hamming_distance(pred.flatten(),
+                                         collection_features[i].flatten()))
+        else: #default to cosine
+            sims.append(distance.cosine(pred.flatten(),
+                                        collection_features[i].flatten()))
     print('max sim = ' +str(max(sims)))
     similar_images=pd.DataFrame({'imgfile':images,
                                  'simscore':sims})
