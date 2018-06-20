@@ -240,5 +240,5 @@ def chose_mine():
     
     if method == 'POST':
         user_image = flask.request.form['submit']
-        save_validation_result(0,user_image)
+        save_validation_result(1,user_image)
         return flask.render_template('validate.html')
