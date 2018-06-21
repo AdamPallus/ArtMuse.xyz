@@ -22,7 +22,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/">ART MAGIC</a></li>
         <li><a href="http://www.google.com">About Me</a></li>
-        <li><a href="http://www.github.com/adampallus/artnetwork">Artnetwork Github Page</a></li>
+        <li><a href="http://www.github.com/adampallus/artmagic">Artmagic Github Page</a></li>
         <li><a href="http://www.google.com"> How does it work? <span class="sr-only">(current)</span></a></li>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -30,12 +30,21 @@
 </nav>
 <!-- Background image -->
 <!--body background='/static/img/success.png' height='100%'-->
+<div class="validationpic">
+   <a href={{original}} target="_blank">
+      <img class="validationpic" src={{original}}>
+   </a>
+</div>
+
+
+
+
 
 <div class="row">
   <div class="column">
     <form method="POST" action='/random'>
         <span class="input-group-btn">
-          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>BEST</button>
+          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>These are most similar!</button>
         </span>
     </form>
     <a href={{matches['linkurl'][0]}} target="_blank">
@@ -48,25 +57,25 @@
   <div class="column">
       <form method="POST" action='/algorithm'>
         <span class="input-group-btn">
-          <button class="btn-lg btn-primary" input type="submit" name= "submit"value={{original}}>BEST</button>
+          <button class="btn-lg btn-primary" input type="submit" name= "submit"value={{original}}>These are most similar!</button>
         </span>
     </form>
-    <a href={{"static/img/tmp/"+original}} target="_blank">
-      <img class="userpic" src={{"static/img/tmp/"+original}}>
-    </a>
+ 
     <a href={{matches['linkurl'][0]}} target="_blank">
       <img src={{matches['image_url'][0]}} title={{matches['art_title'][0]}}>
     </a>
-
+    <a href={{matches['linkurl'][1]}} target="_blank">
+      <img src={{matches['image_url'][1]}} title={{matches['art_title'][1]}}>
+    </a>
   </div>
   <div class="column">
       <form method="POST" action='/algorithm'>
         <span class="input-group-btn">
-          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>BEST</button>
+          <button class="btn-lg btn-primary" input type="submit" name= "submit" value={{original}}>These are most similar!</button>
         </span>
     </form>
-    <a href={{matches['linkurl'][1]}} target="_blank">
-      <img src={{matches['image_url'][1]}} title={{matches['art_title'][1]}}>
+    <a href={{matches['linkurl'][3]}} target="_blank">
+      <img src={{matches['image_url'][3]}} title={{matches['art_title'][3]}}>
     </a>
     <a href={{matches['linkurl'][2]}} target="_blank">
       <img src={{matches['image_url'][2]}} title={{matches['art_title'][2]}}>
@@ -83,16 +92,16 @@
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][3]}} target="_blank">
-      <img src={{matches['image_url'][3]}} title={{matches['art_title'][3]}}>
+    <a href={{matches['linkurl'][5]}} target="_blank">
+      <img src={{matches['image_url'][5]}} title={{matches['art_title'][5]}}>
     </a>
     <a href={{matches['linkurl'][4]}} target="_blank">
       <img src={{matches['image_url'][4]}} title={{matches['art_title'][4]}}>
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][5]}} target="_blank">
-      <img src={{matches['image_url'][5]}} title={{matches['art_title'][5]}}>
+    <a href={{matches['linkurl'][7]}} target="_blank">
+      <img src={{matches['image_url'][7]}} title={{matches['art_title'][7]}}>
     </a>
     <a href={{matches['linkurl'][6]}} target="_blank">
       <img src={{matches['image_url'][6]}} title={{matches['art_title'][6]}}>
@@ -110,7 +119,7 @@
   </div>
   <div class="column">
     <a href={{matches['linkurl'][7]}} target="_blank">
-      <img src={{matches['image_url'][7]}} title={{matches['art_title'][7]}}>
+      <img src={{matches['image_url'][9]}} title={{matches['art_title'][9]}}>
     </a>
     <a href={{matches['linkurl'][8]}} target="_blank">
       <img src={{matches['image_url'][8]}} title={{matches['art_title'][8]}}>
@@ -118,7 +127,7 @@
   </div>
   <div class="column">
     <a href={{matches['linkurl'][9]}} target="_blank">
-      <img src={{matches['image_url'][9]}} title={{matches['art_title'][9]}}>
+      <img src={{matches['image_url'][11]}} title={{matches['art_title'][11]}}>
     </a>
     <a href={{matches['linkurl'][10]}} target="_blank">
       <img src={{matches['image_url'][10]}} title={{matches['art_title'][10]}}>
@@ -135,16 +144,16 @@
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][11]}} target="_blank">
-      <img src={{matches['image_url'][11]}} title={{matches['art_title'][11]}}>
+    <a href={{matches['linkurl'][13]}} target="_blank">
+      <img src={{matches['image_url'][13]}} title={{matches['art_title'][13]}}>
     </a>
     <a href={{matches['linkurl'][12]}} target="_blank">
       <img src={{matches['image_url'][12]}} title={{matches['art_title'][12]}}>
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][13]}} target="_blank">
-      <img src={{matches['image_url'][13]}} title={{matches['art_title'][13]}}>
+    <a href={{matches['linkurl'][15]}} target="_blank">
+      <img src={{matches['image_url'][15]}} title={{matches['art_title'][15]}}>
     </a>
     <a href={{matches['linkurl'][14]}} target="_blank">
       <img src={{matches['image_url'][14]}} title={{matches['art_title'][14]}}>
@@ -161,19 +170,19 @@
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][15]}} target="_blank">
-      <img src={{matches['image_url'][15]}} title={{matches['art_title'][15]}}>
+    <a href={{matches['linkurl'][17]}} target="_blank">
+      <img src={{matches['image_url'][17]}} title={{matches['art_title'][17]}}>
     </a>
     <a href={{matches['linkurl'][16]}} target="_blank">
       <img src={{matches['image_url'][16]}} title={{matches['art_title'][16]}}>
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][17]}} target="_blank">
-      <img src={{matches['image_url'][17]}} title={{matches['art_title'][17]}}>
+    <a href={{matches['linkurl'][19]}} target="_blank">
+      <img src={{matches['image_url'][19]}} title={{matches['art_title'][19]}}>
     </a>
     <a href={{matches['linkurl'][18]}} target="_blank">
-      <img src={{matches['image_url'][18]}} title={{matches['art_title'][19]}}>
+      <img src={{matches['image_url'][18]}} title={{matches['art_title'][18]}}>
     </a>
   </div>
 </div>
@@ -187,16 +196,16 @@
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][19]}} target="_blank">
-      <img src={{matches['image_url'][19]}} title={{matches['art_title'][19]}}>
+    <a href={{matches['linkurl'][21]}} target="_blank">
+      <img src={{matches['image_url'][21]}} title={{matches['art_title'][21]}}>
     </a>
     <a href={{matches['linkurl'][20]}} target="_blank">
       <img src={{matches['image_url'][20]}} title={{matches['art_title'][20]}}>
     </a>
   </div>
   <div class="column">
-    <a href={{matches['linkurl'][21]}} target="_blank">
-      <img src={{matches['image_url'][21]}} title={{matches['art_title'][21]}}>
+    <a href={{matches['linkurl'][23]}} target="_blank">
+      <img src={{matches['image_url'][23]}} title={{matches['art_title'][23]}}>
     </a>
     <a href={{matches['linkurl'][22]}} target="_blank">
       <img src={{matches['image_url'][22]}} title={{matches['art_title'][22]}}>

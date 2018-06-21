@@ -29,12 +29,12 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<!-- Background image -->
-<!--body background='/static/img/background.png' height='100%'-->
 
 
 
-    <!-- <div class='vertical-center'> -->
+
+
+
 
 
 
@@ -70,44 +70,46 @@
           </form>
         </div>
 
+     <p id = "instructions" class="text-center"> Choose an example from the gallery below, or upload your own work of art!</p>
+    </div>
 
 
-          <div class="col-xl-4 col-lg-4"></div>
 
-      </div>
-
-      <div class"row top5">
-
-        <div class="col-xl-4 col-lg-4"></div>
-
-        <div class="col-xl-4 col-lg-4 text-center">
-
-          <!--a class="link text-success" href="http://www.google.com">Example submission.</a-->
-
-        </div>
-
-        <div class="col-xl-4 col-lg-4"></div>
-
-      </div>
-
-      <div class = "row top5">
-        <div class="col-xl-4 col-lg-4"></div>
-
-        <div class="col-xl-4 col-lg-4 text-center">
-
-          <button class="link text-success" id="instructions_link" style="text-decoration:underline; display: inline-block; background-color: Transparent; background-repeat: no-repeat; border: none; outline: none">Instructions</button>
-          <p id = "instructions" class="text-success" hidden>Upload a photo of your chosen artwork
-            <img class='center-block img-responsive' src="/static/img/example-art.jpg"/ max-width='50%';>
-          </p>
-
-        </div>
-
-        <div class="col-xl-4 col-lg-4"></div>
-
+<div class="row">
+	<div class="column">
+	  <form method="POST" action="/example1">
+	    <input type="image" src="/static/img/example1.jpg", name="image" value="/static/img/example-art.jpg">
+	  </form>
+      <form method="POST" action="/example2">
+        <input type="image" src="/static/img/example2.jpg", name="image" value="/static/img/example-art.jpg">
+      </form>
+       <form method="POST" action="/example3">
+        <input type="image" src="/static/img/example3.jpg", name="image" value="/static/img/example-art.jpg">
+      </form>                   
+	</div>
+	<div class="column">
+	  <form method="POST" action="/example4">
+	    <input type="image" src="/static/img/example4.jpg", name="image" value="/static/img/example-art.jpg">
+	  </form>
+	  <form method="POST" action="/example5">
+	    <input type="image" src="/static/img/example5.jpg", name="image" value="/static/img/example-art.jpg">
+	  </form>
+	   <form method="POST" action="/example6">
+	    <input type="image" src="/static/img/example6.jpg", name="image" value="/static/img/example-art.jpg">
+	  </form>                   
+	</div>
+    <div class="column">
+	  <form method="POST" action="/example7">
+	    <input type="image" src="/static/img/example7.jpg", name="image" value="/static/img/example-art.jpg">
+	  </form>
+      <form method="POST" action="/example8">
+        <input type="image" src="/static/img/example8.jpg", name="image" value="/static/img/example-art.jpg">
+      </form>
+       <form method="POST" action="/example9">
+        <input type="image" src="/static/img/example9.jpg", name="image" value="/static/img/example-art.jpg">
+      </form>                   
   </div>
-
-
-  <!-- </div> -->
+</div>
 
 
 </body>

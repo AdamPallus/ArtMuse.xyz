@@ -45,7 +45,7 @@ def find_matches(pred, #features from user selected image
             sims.append(distance.euclidean(pred.flatten(),
                                            collection_features[i].flatten()))
         elif dist=='hamming':
-            sims.append(hamming_distance(pred.flatten(),
+            sims.append(distance.hamming(pred.flatten(),
                                          collection_features[i].flatten()))
         else: #default to cosine
             sims.append(distance.cosine(pred.flatten(),
