@@ -101,14 +101,12 @@ def save_validation_result(result,user_image):
     '''loads json and saves results of validation test'''
     
     json_path = os.path.join(app.config['DATA_FOLDER'],'validation_results.json')
-    with open(json_path, 'r') as fp:
-        validation_results = json.load(fp)
 
-    validation_results.append([{'time':str(datetime.datetime.now()),
+    newdata=[{'time':str(datetime.datetime.now()),
                                 'result':result,
-                                'user_image':user_image}])  
-    with open(json_path, 'w') as fp:
-        json.dump(validation_results, fp, sort_keys=True, indent=4)
+                                'user_image':user_image}]  
+    with open(json_path, 'a') as fp:
+        json.dump(newdata, fp, sort_keys=True, indent=4)
         
 def show_results(imgurl, rotate_image=True):           
     #check and rotate cellphone images
