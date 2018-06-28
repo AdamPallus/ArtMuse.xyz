@@ -1,11 +1,11 @@
-# ART MAGIC
+# Art Muse
 Adam Pallus
 
-This app is ready to load onto an AWS server. Testing has shown that it requires a t2.medium server to have enough memory to load the features matrix into memory.
+Personalized art gallery curation harnessing the creativity of AI
 
 ## Use!
 
-Upload a photo of a piece of art. The algorithm will suggest links to art for sale at fineartamerica.com that match the style and subject of your submission.
+Upload a photo of a piece of art you love, or a photo of a scene you would like to see painted. Art Muse will create a custom gallery just for you of art prints available for sale at fineartamerica.com that match the style and subject of your submission. The entire photo will be used, so the artwork should be centered.
 
 ## How it works:
-A convolutional neural network extracts abstract features from the image you upload and searches the feature-space for similar art. It will return art with an overall similar shape, a similar subject, or a similar painting style. You may find results matching any or all of the categories by scrolling down the page.
+A convolutional neural network extracts abstract features from the image you upload and searches the feature-space of available works of art to create a custom gallery instantly. It will present art with an overall similar shape, a similar subject, or a similar painting style. You may find results matching any or all of the categories by scrolling down the page.
