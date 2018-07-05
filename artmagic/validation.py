@@ -37,23 +37,34 @@ from artmagic.models.similarity import find_matches
 #files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
 #                                          'files_and_titles_6-17.csv'))
 
-#collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
-#                                           'fc6_features_art20.npy'))
-#files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
-#                                          'files_and_titles_art20.csv'))
-
 collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
-                                           'collection_features_6-17.npy'))
+                                           'fc6_features_art20.npy'))
 files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
-                                          'files_and_titles_6-17.csv'))
+                                          'files_and_titles_art20.csv'))
+
+#collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
+#                                           'collection_features_6-17.npy'))
+#
+#files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
+#                                          'files_and_titles_6-17.csv'))
+
+#collection_features = np.load(os.path.join(app.config['DATA_FOLDER'],
+#                                           'collection_features_celeb2_fc.npy'))
+#files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
+#                                          'files_and_titles_celeb2.csv'))
 
 app.secret_key = 'adam'
+
+distance_metric = 'cosine'
+
+if distance_metric == 'hamming':
+    collection_features[collection_features>0]=1
 
 #I was getting an error because the model was losing track of the graph
 #defining graph here lets me keep track of it later as things move around
 graph = tf.get_default_graph()
 
-if collection_features.shape==4096:
+if collection_features.shape[1]==4096:
     model = VGG16(include_top=True, weights='imagenet')
     #remove the classification layer (fc8)
     model.layers.pop()
@@ -127,7 +138,7 @@ def show_results(imgurl, rotate_image=True):
     with graph.as_default():
         pred=model.predict(img)
     matches=find_matches(pred, collection_features, 
-                         files_and_titles['imgfile'],dist='cosine')
+                         files_and_titles['imgfile'],dist=distance_metric)
     
     showresults=files_and_titles.set_index('imgfile',drop=False).join(matches.set_index('imgfile'))
     showresults.sort_values(by='simscore',ascending=True,inplace=True)

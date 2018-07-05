@@ -8,7 +8,8 @@ Created on Mon Jun 11 23:52:42 2018
 from scipy.spatial import distance
 
 import pandas as pd
-
+from numpy import inner
+from numpy.linalg import norm
 
 #def cosine_distance(a,b):
 #    return(np.inner(a, b) / (norm(a) * norm(b)))
@@ -39,12 +40,15 @@ def find_matches(pred, #features from user selected image
     pred = pred.flatten()
     
     nimages = len(collection_features)
+    #vectorize cosine similarity
+#    sims= inner(pred,collection_features)/norm(pred)/norm(collection_features,axis=1)
     sims = []
     for i in range(0,nimages):
         if dist=='euclidean':
             sims.append(distance.euclidean(pred.flatten(),
                                            collection_features[i].flatten()))
         elif dist=='hamming':
+            pred[pred>0]=1
             sims.append(distance.hamming(pred.flatten(),
                                          collection_features[i].flatten()))
         else: #default to cosine
