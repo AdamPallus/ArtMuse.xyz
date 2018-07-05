@@ -55,7 +55,7 @@ files_and_titles=pd.read_csv(os.path.join(app.config['DATA_FOLDER'],
 
 app.secret_key = 'adam'
 
-distance_metric = 'cosine'
+distance_metric = 'hamming'
 
 if distance_metric == 'hamming':
     collection_features[collection_features>0]=1
